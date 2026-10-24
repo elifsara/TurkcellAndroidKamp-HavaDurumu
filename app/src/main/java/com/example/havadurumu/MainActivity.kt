@@ -13,8 +13,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.havadurumu.ui.theme.HavaDurumuTheme
 import android.util.Log
-
-
+import androidx.compose.foundation.layout.Column
+import androidx.compose.material3.Button
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.unit.dp
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,10 +28,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             HavaDurumuTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    SayacEkrani(Modifier.padding(innerPadding))
                 }
             }
         }
@@ -56,18 +58,21 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Merhaba $name!",
-        modifier = modifier
-    )
+fun SayacEkrani (modifier: Modifier = Modifier) {
+    var count by remember { mutableStateOf(0) }
+
+    Column(modifier = modifier.padding(16.dp)) {
+        Text("Sayaç: $count")
+        Button(onClick = {count ++}) {Text("Artır") }
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun SayacEkraniPreview() {
     HavaDurumuTheme {
-        Greeting("Android")
+       SayacEkrani()
     }
 }
