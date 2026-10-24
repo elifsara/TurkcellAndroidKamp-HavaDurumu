@@ -16,6 +16,8 @@ import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.runtime.mutableStateOf
@@ -68,11 +70,11 @@ fun SayacEkrani (modifier: Modifier = Modifier) {
 
     Column(modifier = modifier.padding(16.dp)) {
         Text("Sayaç Uygulaması")
-        Card {
-            Box {
+        Card(Modifier.fillMaxWidth()) {
+            Box(Modifier.padding(16.dp)) {
                 Row {
-                    Text("Sayaç: $count")
-                    Button(onClick = {count ++}) {Text("Artır") }
+                    Text("Sayaç: $count", Modifier.padding(end = 16.dp))
+                    Button(onClick = {count ++}, Modifier.size(width = 120.dp, height = 48.dp)) {Text("Artır") }
                 }
             }
         }
