@@ -14,7 +14,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.havadurumu.ui.theme.HavaDurumuTheme
 import android.util.Log
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Box
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
@@ -64,8 +67,16 @@ fun SayacEkrani (modifier: Modifier = Modifier) {
     var count by remember { mutableStateOf(0) }
 
     Column(modifier = modifier.padding(16.dp)) {
-        Text("Sayaç: $count")
-        Button(onClick = {count ++}) {Text("Artır") }
+        Text("Sayaç Uygulaması")
+        Card {
+            Box {
+                Row {
+                    Text("Sayaç: $count")
+                    Button(onClick = {count ++}) {Text("Artır") }
+                }
+            }
+        }
+
     }
 }
 
